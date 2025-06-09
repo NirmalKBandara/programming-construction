@@ -1,6 +1,7 @@
 ---
 # Exception Handling in Java
 ---
+
 ## Table of Contents
 1. [Overview](#overview)
 2. [Fundamental Concepts](#fundamental-concepts)
@@ -42,6 +43,9 @@ Exception handling is a critical programming mechanism that allows applications 
 
 The try-catch mechanism provides a structured approach to handling potential failures:
 
+<details>
+<summary>Click to view Basic Try-Catch Example</summary>
+
 ```java
 try {
     // Execute potentially risky operations
@@ -52,17 +56,30 @@ try {
 }
 ```
 
+</details>
+
 ### Exception Declaration vs Exception Handling
 
 **Method Declaration Approach**
+
+<details>
+<summary>Click to view Method Declaration Example</summary>
+
 ```java
 public void performRiskyOperation() throws BusinessException {
     // Method implementation that may throw BusinessException
 }
 ```
+
+</details>
+
 This approach declares that the method may throw an exception, delegating handling responsibility to the caller.
 
 **Direct Handling Approach**
+
+<details>
+<summary>Click to view Direct Handling Example</summary>
+
 ```java
 try {
     performRiskyOperation();
@@ -71,6 +88,9 @@ try {
     // Implement recovery logic
 }
 ```
+
+</details>
+
 This approach handles the exception immediately where it occurs.
 
 ---
@@ -78,6 +98,9 @@ This approach handles the exception immediately where it occurs.
 ## Exception Types and Hierarchy
 
 Understanding Java's exception hierarchy is essential for effective exception handling:
+
+<details>
+<summary>Click to view Complete Exception Hierarchy</summary>
 
 ```
 java.lang.Object
@@ -106,6 +129,8 @@ java.lang.Object
         └── AWTError
 ```
 
+</details>
+
 ### Key Terminology
 - **SQL**: Structured Query Language
 - **AWT**: Abstract Window Toolkit  
@@ -117,6 +142,9 @@ java.lang.Object
 ## Implementation Patterns
 
 ### Complete Exception Handling Structure
+
+<details>
+<summary>Click to view Complete Try-Catch-Finally Example</summary>
 
 ```java
 try {
@@ -136,6 +164,8 @@ try {
 }
 ```
 
+</details>
+
 The `finally` block ensures critical cleanup operations execute whether the try block succeeds or fails.
 
 ---
@@ -143,6 +173,9 @@ The `finally` block ensures critical cleanup operations execute whether the try 
 ## Call Stack Mechanism
 
 ### Demonstration of Exception Propagation
+
+<details>
+<summary>Click to view Exception Propagation Demo</summary>
 
 ```java
 public class ExceptionPropagationDemo {
@@ -181,14 +214,21 @@ public class ExceptionPropagationDemo {
 }
 ```
 
+</details>
+
 ### Exception Object Creation Process
 
 When `dataArray[5]` is accessed, the JVM automatically creates:
+
+<details>
+<summary>Click to view Exception Object Creation</summary>
 
 ```java
 ArrayIndexOutOfBoundsException exception = 
     new ArrayIndexOutOfBoundsException("Index 5 out of bounds for length 3");
 ```
+
+</details>
 
 **Exception Object Components:**
 - **Exception Type**: ArrayIndexOutOfBoundsException
@@ -213,6 +253,9 @@ Input/output operations are inherently risky and require comprehensive exception
 
 ### Mandatory Exception Handling
 
+<details>
+<summary>Click to view File Operations Exception Handling</summary>
+
 ```java
 // File reading operations
 try (FileReader fileReader = new FileReader("data.txt");
@@ -228,7 +271,14 @@ try (FileReader fileReader = new FileReader("data.txt");
     System.err.println("IO operation failed: " + e.getMessage());
     // Implement error recovery
 }
+```
 
+</details>
+
+<details>
+<summary>Click to view Scanner Operations Exception Handling</summary>
+
+```java
 // Scanner operations
 try (Scanner scanner = new Scanner(System.in)) {
     processUserInput(scanner);
@@ -237,7 +287,12 @@ try (Scanner scanner = new Scanner(System.in)) {
 }
 ```
 
+</details>
+
 ### IO Exception Hierarchy
+
+<details>
+<summary>Click to view IO Exception Hierarchy</summary>
 
 ```
 java.lang.Exception
@@ -256,11 +311,16 @@ java.lang.Exception
         └── WriteAbortedException (Write operation abortion)
 ```
 
+</details>
+
 ---
 
 ## Custom Exception Development
 
 ### Creating Application-Specific Exceptions
+
+<details>
+<summary>Click to view Custom Checked Exception</summary>
 
 ```java
 public class BusinessLogicException extends Exception {
@@ -298,7 +358,12 @@ public class BusinessLogicException extends Exception {
 }
 ```
 
+</details>
+
 ### Runtime Exception Alternative
+
+<details>
+<summary>Click to view Custom Runtime Exception</summary>
 
 ```java
 public class ConfigurationException extends RuntimeException {
@@ -317,7 +382,12 @@ public class ConfigurationException extends RuntimeException {
 }
 ```
 
+</details>
+
 ### Implementation Example
+
+<details>
+<summary>Click to view Custom Exception Usage</summary>
 
 ```java
 public class DataProcessor {
@@ -340,6 +410,8 @@ public class DataProcessor {
 }
 ```
 
+</details>
+
 ---
 
 ## Best Practices
@@ -352,6 +424,10 @@ public class DataProcessor {
 - Use exception hierarchy to your advantage
 
 **Proper Exception Ordering**
+
+<details>
+<summary>Click to view Exception Ordering Example</summary>
+
 ```java
 try {
     performFileOperation();
@@ -366,6 +442,8 @@ try {
     handleGeneralError(e);
 }
 ```
+
+</details>
 
 **Resource Management**
 - Always use try-with-resources for automatic resource management
@@ -385,6 +463,9 @@ try {
 
 ### Testing Exception Scenarios
 
+<details>
+<summary>Click to view Exception Testing Examples</summary>
+
 ```java
 @Test
 public void testBusinessLogicException() {
@@ -399,5 +480,78 @@ public void testBusinessLogicException() {
     });
 }
 ```
+
+</details>
+
+### Advanced Exception Handling Patterns
+
+<details>
+<summary>Click to view Multiple Exception Handling</summary>
+
+```java
+public class AdvancedExceptionHandling {
+    
+    public void processMultipleOperations() {
+        List<String> errors = new ArrayList<>();
+        
+        try {
+            performDatabaseOperation();
+        } catch (SQLException e) {
+            errors.add("Database error: " + e.getMessage());
+            logger.error("Database operation failed", e);
+        }
+        
+        try {
+            performFileOperation();
+        } catch (IOException e) {
+            errors.add("File error: " + e.getMessage());
+            logger.error("File operation failed", e);
+        }
+        
+        if (!errors.isEmpty()) {
+            throw new RuntimeException("Multiple operations failed: " + 
+                String.join(", ", errors));
+        }
+    }
+}
+```
+
+</details>
+
+<details>
+<summary>Click to view Exception Chaining Example</summary>
+
+```java
+public class ExceptionChaining {
+    
+    public void performComplexTask() throws TaskException {
+        try {
+            connectToDatabase();
+            processData();
+            generateReport();
+        } catch (DatabaseException e) {
+            throw new TaskException("Task failed due to database issues", e);
+        } catch (ProcessingException e) {
+            throw new TaskException("Task failed during data processing", e);
+        } catch (ReportException e) {
+            throw new TaskException("Task failed during report generation", e);
+        }
+    }
+    
+    private void connectToDatabase() throws DatabaseException {
+        // Database connection logic
+    }
+    
+    private void processData() throws ProcessingException {
+        // Data processing logic
+    }
+    
+    private void generateReport() throws ReportException {
+        // Report generation logic
+    }
+}
+```
+
+</details>
 
 This comprehensive approach to exception handling ensures robust, maintainable, and professional Java applications that can gracefully handle unexpected conditions while providing meaningful feedback for debugging and user experience.
