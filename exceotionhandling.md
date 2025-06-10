@@ -44,7 +44,7 @@ Exception handling is a critical programming mechanism that allows applications 
 The try-catch mechanism provides a structured approach to handling potential failures:
 
 <details>
-<summary>Click to view Basic Try-Catch Example</summary>
+<summary>Basic Try-Catch Example</summary>
 
 ```java
 try {
@@ -63,7 +63,7 @@ try {
 **Method Declaration Approach**
 
 <details>
-<summary>Click to view Method Declaration Example</summary>
+<summary>Method Declaration Example</summary>
 
 ```java
 public void performRiskyOperation() throws BusinessException {
@@ -78,7 +78,7 @@ This approach declares that the method may throw an exception, delegating handli
 **Direct Handling Approach**
 
 <details>
-<summary>Click to view Direct Handling Example</summary>
+<summary>Direct Handling Example</summary>
 
 ```java
 try {
@@ -100,7 +100,7 @@ This approach handles the exception immediately where it occurs.
 Understanding Java's exception hierarchy is essential for effective exception handling:
 
 <details>
-<summary>Click to view Complete Exception Hierarchy</summary>
+<summary>Complete Exception Hierarchy</summary>
 
 ```
 java.lang.Object
@@ -144,7 +144,7 @@ java.lang.Object
 ### Complete Exception Handling Structure
 
 <details>
-<summary>Click to view Complete Try-Catch-Finally Example</summary>
+<summary>Complete Try-Catch-Finally Example</summary>
 
 ```java
 try {
@@ -175,7 +175,7 @@ The `finally` block ensures critical cleanup operations execute whether the try 
 ### Demonstration of Exception Propagation
 
 <details>
-<summary>Click to view Exception Propagation Demo</summary>
+<summary>Exception Propagation Demo</summary>
 
 ```java
 public class ExceptionPropagationDemo {
@@ -221,7 +221,7 @@ public class ExceptionPropagationDemo {
 When `dataArray[5]` is accessed, the JVM automatically creates:
 
 <details>
-<summary>Click to view Exception Object Creation</summary>
+<summary>Exception Object Creation</summary>
 
 ```java
 ArrayIndexOutOfBoundsException exception = 
@@ -254,7 +254,7 @@ Input/output operations are inherently risky and require comprehensive exception
 ### Mandatory Exception Handling
 
 <details>
-<summary>Click to view File Operations Exception Handling</summary>
+<summary>File Operations Exception Handling</summary>
 
 ```java
 // File reading operations
@@ -276,7 +276,7 @@ try (FileReader fileReader = new FileReader("data.txt");
 </details>
 
 <details>
-<summary>Click to view Scanner Operations Exception Handling</summary>
+<summary>Scanner Operations Exception Handling</summary>
 
 ```java
 // Scanner operations
@@ -292,7 +292,7 @@ try (Scanner scanner = new Scanner(System.in)) {
 ### IO Exception Hierarchy
 
 <details>
-<summary>Click to view IO Exception Hierarchy</summary>
+<summary>IO Exception Hierarchy</summary>
 
 ```
 java.lang.Exception
@@ -320,7 +320,7 @@ java.lang.Exception
 ### Creating Application-Specific Exceptions
 
 <details>
-<summary>Click to view Custom Checked Exception</summary>
+<summary>Custom Checked Exception</summary>
 
 ```java
 public class BusinessLogicException extends Exception {
@@ -363,7 +363,7 @@ public class BusinessLogicException extends Exception {
 ### Runtime Exception Alternative
 
 <details>
-<summary>Click to view Custom Runtime Exception</summary>
+<summary>Custom Runtime Exception</summary>
 
 ```java
 public class ConfigurationException extends RuntimeException {
@@ -387,7 +387,7 @@ public class ConfigurationException extends RuntimeException {
 ### Implementation Example
 
 <details>
-<summary>Click to view Custom Exception Usage</summary>
+<summary>Custom Exception Usage</summary>
 
 ```java
 public class DataProcessor {
@@ -426,7 +426,7 @@ public class DataProcessor {
 **Proper Exception Ordering**
 
 <details>
-<summary>Click to view Exception Ordering Example</summary>
+<summary>Exception Ordering Example</summary>
 
 ```java
 try {
@@ -464,7 +464,7 @@ try {
 ### Testing Exception Scenarios
 
 <details>
-<summary>Click to view Exception Testing Examples</summary>
+<summary>Exception Testing Examples</summary>
 
 ```java
 @Test
@@ -486,7 +486,7 @@ public void testBusinessLogicException() {
 ### Advanced Exception Handling Patterns
 
 <details>
-<summary>Click to view Multiple Exception Handling</summary>
+<summary>Multiple Exception Handling</summary>
 
 ```java
 public class AdvancedExceptionHandling {
@@ -519,7 +519,7 @@ public class AdvancedExceptionHandling {
 </details>
 
 <details>
-<summary>Click to view Exception Chaining Example</summary>
+<summary>Exception Chaining Example</summary>
 
 ```java
 public class ExceptionChaining {
